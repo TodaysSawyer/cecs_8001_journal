@@ -1,0 +1,200 @@
+<!--Site layout and design credit goes to W3 Schools' "Blog template" from https://www.w3schools.com/w3css/tryw3css_templates_blog.htm-->
+<!--Modifications and content by David Auricht-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>David Auricht's Cybernetics Build Journal</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
+</head>
+<body class="w3-light-grey">
+
+<!-- w3-content defines a container for fixed size centered content, 
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1400px">
+
+<!-- Header -->
+<header class="w3-container w3-center w3-padding-32"> 
+  <h1><b>Master of Applied Cybernetics - CECS8001 – Build Journey</b></h1>
+  <p>David Auricht - U7446851</p>
+</header>
+
+<!-- Grid -->
+<div class="w3-row">
+
+<!-- Blog entries -->
+<div class="w3-col l8 s12">
+  <!-- Blog entry -->
+  <div class="w3-card-4 w3-margin w3-white">
+    <div class="w3-container">
+      <h3><b>Appendices</b></h3>
+    </div>
+
+    <div class="w3-container">
+      <h4>Appendix A – HEXEN 2.0 Scraping Code</h4>
+      <div class="w3-code">
+        <p>import requests
+        <br>import os
+        <br>from tqdm import tqdm
+        <br>from bs4 import BeautifulSoup as bs
+        <br>from urllib.parse import urljoin, urlparse
+        <br>  
+        <br>def is_valid(url):
+        <br>      """
+        <br>      Checks whether `url` is a valid URL.
+        <br>      """
+        <br>      parsed = urlparse(url)
+        <br>      return bool(parsed.netloc) and bool(parsed.scheme)
+        <br>  
+        <br>  def get_all_images(url):
+        <br>      """
+        <br>      Returns all image URLs on a single `url`
+        <br>      """
+              soup = bs(requests.get(url).content, "html.parser")
+              urls = []
+              for img in tqdm(soup.find_all("img"), "Extracting images"):
+                  img_url = img.attrs.get("src")
+                  if not img_url:
+                     # if img does not contain src attribute, just skip
+                      continue
+                 # make the URL absolute by joining domain with the URL that is just extracted
+                  img_url = urljoin(url, img_url)
+                  try:
+                      pos = img_url.index("?")
+                      img_url = img_url[:pos]
+                  except ValueError:
+                      pass
+                  # finally, if the url is valid
+                  if is_valid(img_url):
+                      urls.append(img_url)
+              return urls
+          
+          def download(url, pathname):
+              """
+              Downloads a file given an URL and puts it in the folder `pathname`
+              """
+              # if path doesn't exist, make that path dir
+              if not os.path.isdir(pathname):
+                  os.makedirs(pathname)
+              # download the body of response by chunk, not immediately
+              response = requests.get(url, stream=True)
+              # get the total file size
+              file_size = int(response.headers.get("Content-Length", 0))
+              # get the file name
+              filename = os.path.join(pathname, url.split("/")[-1])
+              # progress bar, changing the unit to bytes instead of iteration (default by tqdm)
+              if filename == "hexen_images\HEXEN-II-logo.jpg":
+                  pass
+              else:
+                  progress = tqdm(response.iter_content(1024), f"Downloading {filename}", total=file_size, unit="B", unit_scale=True, unit_divisor=1024)
+                  with open(filename, "wb") as f:
+                      for data in progress.iterable:
+                          # write data read to the file
+                          f.write(data)
+                          # update the progress bar manually
+                          progress.update(len(data))
+          
+          def main(url, path):
+              all_links=[]
+              for page in range(1,3):
+                  res = requests.get(url.format(page)).text
+                  soup=bs(res,'html.parser')
+                  for link in soup.select('a[href*=""]'):
+                      all_links.append("http://www.suzannetreister.net/HEXEN2/TAROT_COL/" + link['href'])
+          
+              print(len(all_links))   #for debugging
+              for a_link in all_links:
+                      # get all images
+                  imgs = get_all_images(a_link)
+                  for img in imgs:
+                      # for each image, download it
+                      download(img, path)
+          
+              # get all images
+              imgs = get_all_images(url)
+              for img in imgs:
+                  print("Image name is: " + str(img))
+                  # for each image, download it
+                  download(img, path)
+                  
+          main("http://www.suzannetreister.net/HEXEN2/TAROT_COL/HEXEN_2_TAROT.html", "hexen_images")
+          </p>
+      </div> 
+  </div>
+  </div>
+  <hr>
+<!-- END BLOG ENTRIES -->
+</div>
+
+<!-- Sidebar -->
+<div class="w3-col l4">
+  <!-- About Card -->
+  <div class="w3-card w3-margin w3-margin-top">
+  <img src="home_dave_profile.jpg" style="width:100%">
+    <div class="w3-container w3-white">
+      <h4><b>Dave</b></h4>
+      <p>"Recovering Professional Cynic"</p>
+      <p>With a background in software testing, and management thereof, I come to the programme loking to hone broader interests in modern and emerging technologies and the benefits I hope they can provide to society.</p>
+    </div>
+  </div><hr>
+  
+  <!-- Posts -->
+  <div class="w3-card w3-margin">
+    <div class="w3-container w3-padding">
+      <h4>Entries</h4>
+    </div>
+    <ul class="w3-ul w3-hoverable w3-white">
+      <li>
+         <a href="index.html" target="_self">
+         <img src="sidebar_intro_icon.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+         <span class="w3-large">Intro</span><br>
+         <span>An introduction to myself and my journal.</span>
+         </a>
+      </li>
+      <li>
+        <a href="skills.html" target="_self">
+        <img src="skills_balloon.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Skills</span><br>
+        <span>An overview of "build" skills to be developed</span>
+        </a>
+     </li>
+      <li>
+        <a href="fortnights.html" target="_self">
+        <img src="fortnights_f4_screenshot.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Fortnights</span><br>
+        <span>A fortnight-by-fortnight look at skill growth</span>
+        </a>
+     </li> 
+     <li>
+      <a href="maker_project.html" target="_self">
+      <img src="maker_schematic.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+      <span class="w3-large">Maker Project</span><br>
+      <span>The semester 1 maker project's learnings</span>
+      </a>
+   </li> 
+    </ul>
+  </div>
+  <hr> 
+  
+<!-- END Sidebar -->
+</div>
+
+<!-- END GRID -->
+</div><br>
+
+<!-- END w3-content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>, modified by David Auricht</p>
+</footer>
+
+</body>
+</html>

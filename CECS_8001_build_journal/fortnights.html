@@ -1,0 +1,161 @@
+<!--Site layout and design credit goes to W3 Schools' "Blog template" from https://www.w3schools.com/w3css/tryw3css_templates_blog.htm-->
+<!--Modifications and content by David Auricht-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>David Auricht's Cybernetics Build Journal</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
+</head>
+<body class="w3-light-grey">
+
+<!-- w3-content defines a container for fixed size centered content, 
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1400px">
+
+<!-- Header -->
+<header class="w3-container w3-center w3-padding-32"> 
+  <h1><b>Master of Applied Cybernetics - CECS8001 – Build Journey</b></h1>
+  <p>David Auricht - U7446851</p>
+</header>
+
+<!-- Grid -->
+<div class="w3-row">
+
+<!-- Blog entries -->
+<div class="w3-col l8 s12">
+  <!-- Blog entry -->
+  <div class="w3-card-4 w3-margin w3-white">
+    <div class="w3-container">
+      <h3><b>Fortnight By Fortnight</b></h3>
+    </div>
+
+    <div class="w3-container">
+      <h4>Fortnight 1: A Tale of Two Chatbots/Intro2Python</h4>
+      <h6>Covered: Skill 1</h6>
+      <p>The introductory fortnight was instrumental in rebuilding confidence in my Python knowledge – The chatbot example was straightforward to understand as a concept and moreover it was instantly clear that even a simple program could be of value to the concepts being covered within the Master’s.</p> 
+      <p>Once the coordinate system was understood, the fortnight’s homework was similarly motivating in that it gave confidence in both my existing basic ability, and my capacity to both extend this knowledge and assist others in their learning. I picked up the existing code and refactored it in a manner that made sense to me as a cohesive package with common libraries rather than four individual, self-contained modules. Further to this, I initiated a git repository to maintain my code through the course and reached out to classmates for their letter code with the goal of building a full “font” worth of letters (which worked, for nine letters at least!):</p>
+      <img src="fortnights_f1_screenshot.jpg" alt="Fortnight 1: Plotting" style="width:100%">
+      <hr>
+
+      <h4>Fortnight 2: Purposeful Behaviour/Tic Tac Toe/Web Scraping</h4>
+      <h6>Covered: Skill 1</h6>
+      <p>The second fortnight gave opportunity for more complicated code. It was this step up in complexity that that I found a key learning - room for a more iterative approach to solving a given problem in a way that ensured that a viable product would be delivered with every step, and the value of improvements could be considered. This approach is, of course, fundamental to Agile delivery methodologies, but was not something I had considered deeply with respect to individual projects – it is something I will aim to bring with me on future works.</p> 
+      <p>Within this fortnight came another opportunity for coding learning, outside of the homework – it was my group’s turn to present the Resource Facilitation in fortnight 3, and we elected to base a component of our presentation on <a href="http://www.suzannetreister.net/HEXEN2/TAROT_COL/HEXEN_2_TAROT.html" target="_blank">Suzanne Treister’s HEXEN 2.0 Tarot deck</a>. To print the seventy-eight cards from the deck, the higher resolution variants from the site were necessary and these were only accessible through following the seventy-eight individual links, and manually saving the images one-by-one. With the Python homework in mind, and an awareness that this was exactly the sort of circumstance in which I should be trying to utilise a more efficient code-based solution. So, it was time to get to work.</p>
+      <p>I managed to avoid reinventing the wheel by identifying suitable guides online and wrangling them together to fit the fact that it would need to crawl one level deeper than just the images on a single page:</p>
+      <ul>
+        <li><a href="https://www.thepythoncode.com/article/download-web-page-images-python" target="_blank">https://www.thepythoncode.com/article/download-web-page-images-python</a></li>
+        <li><a href="https://www.thepythoncode.com/article/extract-all-website-links-python" target="_blank">https://www.thepythoncode.com/article/extract-all-website-links-python</a></li>
+      </ul>
+      <img src="fortnights_f2_screenshot.jpg" alt="Fortnight 2: Tarot scraping" style="width:100%">
+      <hr>
+
+      <h4>Fortnight 3: Modelling, Simulation & Feedback Loops</h4>
+      <h6>Covered: Skill 1, Skill 2 (somewhat)</h6>
+      <p>Fortnight 3 presented a nice break from Python coding for assessment, but instead introduced the Arduino via Tinkercad, and notably the variant of C++ that Arduinos run on. With this being a language I had not seen since 2009 (at a guess), the challenge of understanding the problem presented was unfamiliar and it was a reminder that not every tool lives in the land of user-friendly Python. Whilst the problem as posed was easily addressed, it presented a question that is very much relevant to the maker project – when multiple tools are available, which should you choose? Similarly, the exploration of different modelling techniques wasn’t specifically a coding task, but it did bring an awareness that there are multiple solutions to any simulation problem, and different ways in which one can be a “better” fit for the purpose than another – as the course progresses, and when undertaking the maker project, this will become increasingly relevant.</p> 
+      <p>I plan to spend the holiday break tinkering with an Arduino and a micro: bit to explore this further – Either way I want to come out of this year a better, more practical coder, and do I want that to be specifically within Python, or also covering C++, Java, or something else?</p>
+      <hr>
+
+      <h4>Holiday Period</h4>
+      <h6>Covered: Skill 1, Skill 2 (somewhat)</h6>
+      <p>Within the holiday period I spent significant time getting my head into the IoT space, building an understanding of Sensors and methods of data storage via an Arduino IoT explorer kit provided loaned by the School. Via a series of online tutorials (as below), I was able to explore on-device utilisation of C++ code to send data and triggering signals to cloud platforms. Within this time, I was also able to engage some degree of “building” when it came to connecting and mounting varying physical sensors.</p> 
+      <img src="fortnights_fh_screenshot.jpg" alt="Holidays: IoT learnings" style="width:100%">
+      <p>While I enjoyed the early explorations here, I very quickly resolved the question I had aske of myself within fortnight 3.. The exploration of coding languages outside of Python was of interest, but inefficient and in many ways distracting from the ultimate goals of achieving suitable proficiency to be able to understand how, algorithmically, various problems could be solved and solutions implemented and perhaps more crucially the limitations and considerations involved.</p>
+      <p>This realisation allowed a pivot to Python implementations of similar learnings, utilising a micro:bit in place of the Arduino. The increased familiarity of the Python language allowed me to properly focus on the end goal and the ways in which data could be managed and online connections made, ultimately unlocking progress on the individual Maker Project.</p>
+      <hr>
+
+      <h4>Fortnight 4: Modelling, Simulation & Feedback Loops</h4>
+      <h6>Covered: Skill 1, Skill 2</h6>
+      <p>As we stepped to fortnight four, I found myself challenged as I took the basic learnings of half of the previous fortnight’s work and applied it to a more complex system with both sensing and actuation. I initially challenged myself to utilise a DC motor via a dedicated shield, iterated my way to this point, and very rapidly learnt a key lesson around not overstretching to an unnecessary goal when under time stress! The stepping back to a more basic solution, with the motor powered and controlled directly by the Circuit Playground Express, rather than via a shield, afforded me the time to satisfactorily complete the video component and achieved the same end result for demonstration purposes. The lesson here can be applied more broadly – Sensing and actuating components, in the real world, may be more complicated than they seem on the surface, and there is merit to researching and understanding in advance rather than wasting time on an uneconomic solution! The video format of submission was also a challenge in a new area – It had me developing new skills to record two videos and overlay/cut them to fit sufficient commentary within the narrow three-minute limitation:</p> 
+      <img src="fortnights_f4_screenshot.jpg" alt="Fortnight 4: Modelling" style="width:100%">
+      <p>A key component of this fortnight’s building of skills did amount, to some degree, to “building”. In order to properly form a functional “creature” that could house the Circuit Playground Express and also allow mounting of a servo and fan, I needed a degree of basic innovation. This ended up being a trial-and-error process utilising tools available within the lab and my own home, with an output of a Lego structure and blu-tac as a bonding agent! Whilst this was obviously rudimentary, a key lesson I took was the value in delivering a functional “Minimum Viable Product” solution not only for demonstration, but for iteration – The dimensions and structure implemented with Lego could readily be measured and drawn in CAD software to 3D print the next stage of prototyping (and this is an approach I will seek to utilise in the future).</p>
+      <hr>
+
+      <h4>Fortnight 5: Data and Networks</h4>
+      <h6>Covered: N/A</h6>
+      <p>Fortnight five focussed heavily on data modelling and visualisation from a course perspective, and whilst this was absolutely a new skill to me that I enjoyed toying with and look forward to exploring in the future, my time to properly delve in was limited and stood outside of my primary skill development goals for the year. Outside of the assigned CECS8001 homework, however, this fortnight was that within which I seriously kicked into the commencement of my Maker Project, as discussed later in this journal.</p> 
+      <hr>
+
+      <h4>Fortnight 6: Introduction to Machine Learning</h4>
+      <h6>Covered: N/A</h6>
+      <p>Unfortunately, as a result of prioritisation of family matters as of the time of writing, fortnight 6’s homework remains a sole outstanding assessment piece. I expect to see an expansion of machine learning understanding and skill from what has been picked up within the maker project, and to expand upon this ahead of the next submission point.</p> 
+      <hr>
+
+
+    </div>
+  </div>
+  <hr>
+<!-- END BLOG ENTRIES -->
+</div>
+
+<!-- Sidebar -->
+<div class="w3-col l4">
+  <!-- About Card -->
+  <div class="w3-card w3-margin w3-margin-top">
+  <img src="home_dave_profile.jpg" style="width:100%">
+    <div class="w3-container w3-white">
+      <h4><b>Dave</b></h4>
+      <p>"Recovering Professional Cynic"</p>
+      <p>With a background in software testing, and management thereof, I come to the programme loking to hone broader interests in modern and emerging technologies and the benefits I hope they can provide to society.</p>
+    </div>
+  </div><hr>
+  
+  <!-- Posts -->
+  <div class="w3-card w3-margin">
+    <div class="w3-container w3-padding">
+      <h4>Entries</h4>
+    </div>
+    <ul class="w3-ul w3-hoverable w3-white">
+      <li>
+         <a href="index.html" target="_self">
+         <img src="sidebar_intro_icon.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+         <span class="w3-large">Intro</span><br>
+         <span>An introduction to myself and my journal.</span>
+         </a>
+      </li>
+      <li>
+        <a href="skills.html" target="_self">
+        <img src="skills_balloon.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Skills</span><br>
+        <span>An overview of "build" skills to be developed</span>
+        </a>
+     </li>
+     <li>
+      <a href="maker_project.html" target="_self">
+      <img src="maker_schematic.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+      <span class="w3-large">Maker Project</span><br>
+      <span>The semester 1 maker project's learnings</span>
+      </a>
+      </li>
+      <li>
+        <a href="rolling_summary.html" target="_self">
+        <img src="rolling_summary_crop.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Rolling Summary</span><br>
+        <span>Per-checkpoint status check</span>
+        </a>
+      </li>  
+    </ul>
+  </div>
+  
+<!-- END Sidebar -->
+</div>
+
+<!-- END GRID -->
+</div><br>
+
+<!-- END w3-content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>, modified by David Auricht</p>
+</footer>
+
+</body>
+</html>
