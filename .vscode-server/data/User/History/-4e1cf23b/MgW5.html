@@ -1,0 +1,145 @@
+<!--Site layout and design credit goes to W3 Schools' "Blog template" from https://www.w3schools.com/w3css/tryw3css_templates_blog.htm-->
+<!--Modifications and content by David Auricht-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>David Auricht's Cybernetics Build Journal</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
+</head>
+<body class="w3-light-grey">
+
+<!-- w3-content defines a container for fixed size centered content, 
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1400px">
+
+<!-- Header -->
+<header class="w3-container w3-center w3-padding-32"> 
+  <h1><b>Master of Applied Cybernetics - CECS8001 – Build Journey</b></h1>
+  <p>David Auricht - U7446851</p>
+</header>
+
+<!-- Grid -->
+<div class="w3-row">
+
+<!-- Blog entries -->
+<div class="w3-col l8 s12">
+  <!-- Blog entry -->
+  <div class="w3-card-4 w3-margin w3-white">
+    <div class="w3-container">
+      <h3><b>Maker Project</b></h3>
+    </div>
+
+    <div class="w3-container">
+      <h6>Covered: Skills 1, 2, 3</h6>
+      <p>The Individual Maker Project was a key pressing matter and drew upon, to varying degrees, all three target skills. With a goal of building a “cybernetic” baby monitor, and in order of skills, I would need:</p> 
+      <ol>
+        <li>Coding - writing a large library of bespoke Python, operating on a Raspberry Pi to support key objectives of environmental monitoring, cry detection and classification utilising a machine learning model, data logging and smart notifications, and a real-time video stream.</li>
+        <li>Physical “making” - soldering sensors and mounting components.</li>
+        <li>Project managing - setting a defined set of goals, working to an iterative model that aims to ensure a functional product at multiple intervals in line with hitting a strict demo-day deadline.</li>
+      </ol>
+      <p>I found myself barrelling down ever more rabbit holes as I iterated from a simple BME280-based environmental sensor to a fully-featured prototype. To extract from CECS6001 Assessment 2B writings:</p>
+      <i>
+        <p>In the prototype phase, boundaries of the product will be strictly defined by the creator. In particular, the functions that sit outside these boundaries are:</p>
+        <ul>
+          <li>Implementation of only a single degree of machine-learning enabled monitoring (audio).</li>
+          <li>No dedicated web interface (although camera feed was made available in a simple webform).</li>
+          <li>No dedicated applications for direct mobile interfacing.</li>
+          <li>No analysis of captured data or cross-referencing with health studies and outcomes.</li>
+          <li>No “feedback” of captured data or data analysis into the models and processes.</li>
+        </ul>
+        <p>Further to this, the physical design of the prototype is limited as a bare Raspberry Pi with USB microphone, wired and bare environmental sensor, and ribbon-connected, unhoused, camera.  The lack of housing, and inability to suitably mount the sensors without utilising twisted wire, is far from marketable or usable in an average household scenario.</p>
+      </i>
+      <p>Please refer to the following page for a schematic of the Maker Project, covering ultimate goal and prototype implementation, and feel free to review the committed code at <a href="https://gitlab.cecs.anu.edu.au/u7446851/cecs_8001_s1_maker" target="_blank">https://gitlab.cecs.anu.edu.au/u7446851/cecs_8001_s1_maker</a>(please ask me for access as required, as I’m not comfortable with making it public in the present state).</p>
+      <p><a href = "maker_schematic.jpg" target = "_blank"><img src="maker_schematic.jpg" alt="Maker project: Overall schematic" style="width:100%" ></a></p>
+      <hr>
+
+      <h5>Prototype Behaviour</h5>
+      <p>As depicted in the schematic, the prototype employs three forms of sensor; a camera for video, microphone for audio and BME680 for environmental monitoring. Whilst the video sensor is simply, in the prototype, passed to a locally hosted webpage for direct viewing without any other action derivation, the audio and environmental monitors are utilised to continuously log data:</p>
+      <ul>
+        <li>Cry detection (based on self-trained TensorFlow machine learning model), and, if detected:</li>
+        <ul>
+          <li>Cry classification (discomfort, hunger, tired, burping)</li>
+        </ul>
+        <li>Environmental variables (takes 20 readings, averages all metrics, then reports):</li>
+        <ul>
+          <li>Temperature</li>
+          <li>Humidity</li>
+          <li>Pressure</li>
+          <li>Gas (presence of compounds inferred from conductivity measure)</li>
+          <li>Internal Air Quality (IAQ) (as derived from above data, by Bosch’s proprietary formula)</li>
+          <li>IAQ accuracy (sensor calibrates on start-up, with accuracy slowly increasing to “3”)</li>
+        </ul>
+      </ul>
+      <p>For broad interoperability, logging was directed:</p> 
+      <ul>
+        <li>Locally for later collection and internal use.</li>
+        <li>Via MQTT for logging and monitoring on other devices on the internal network (screenshot from networked laptop), and integration with smart home services such as Home Assistant:</li>
+        <p><img src="maker_mqtt.jpg" alt="Maker project: MQTT logging" style="width:100%" ></a></p>
+      </ul>
+
+      
+    </div>
+  </div>
+  <hr>
+<!-- END BLOG ENTRIES -->
+</div>
+
+<!-- Sidebar -->
+<div class="w3-col l4">
+  <!-- About Card -->
+  <div class="w3-card w3-margin w3-margin-top">
+  <img src="home_dave_profile.jpg" style="width:100%">
+    <div class="w3-container w3-white">
+      <h4><b>Dave</b></h4>
+      <p>"Recovering Professional Cynic"</p>
+      <p>With a background in software testing, and management thereof, I come to the programme loking to hone broader interests in modern and emerging technologies and the benefits I hope they can provide to society.</p>
+    </div>
+  </div><hr>
+  
+  <!-- Posts -->
+  <div class="w3-card w3-margin">
+    <div class="w3-container w3-padding">
+      <h4>Entries</h4>
+    </div>
+    <ul class="w3-ul w3-hoverable w3-white">
+      <li>
+         <a href="index.html" target="_self">
+         <img src="sidebar_intro_icon.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+         <span class="w3-large">Intro</span><br>
+         <span>An introduction to myself and my journal.</span>
+         </a>
+      </li>
+      <li>
+        <a href="skills.html" target="_self">
+        <img src="skills_balloon.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Skills</span><br>
+        <span>An overview of "build" skills to be developed</span>
+        </a>
+     </li>
+    </ul>
+  </div>
+  <hr> 
+  
+<!-- END Sidebar -->
+</div>
+
+<!-- END GRID -->
+</div><br>
+
+<!-- END w3-content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>, modified by David Auricht</p>
+</footer>
+
+</body>
+</html>
