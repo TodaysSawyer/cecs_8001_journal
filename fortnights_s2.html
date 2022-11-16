@@ -1,0 +1,203 @@
+<!--Site layout and design credit goes to W3 Schools' "Blog template" from https://www.w3schools.com/w3css/tryw3css_templates_blog.htm-->
+<!--Modifications and content by David Auricht-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>David Auricht's Build Journal</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
+</head>
+<body class="w3-light-grey">
+
+<!-- w3-content defines a container for fixed size centered content, 
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1400px">
+
+<!-- Header -->
+<header class="w3-container w3-center w3-padding-32"> 
+  <h1><b>Master of Applied Cybernetics - CECS8001 – Build Journey</b></h1>
+  <p>David Auricht - U7446851</p>
+</header>
+
+<!-- Grid -->
+<div class="w3-row">
+
+<!-- Blog entries -->
+<div class="w3-col l8 s12">
+  <!-- Blog entry -->   
+    <div class="w3-card-4 w3-margin w3-white">
+      <div class="w3-container">
+        <h3><b>Fortnight By Fortnight - Semester Two</b></h3>
+      </div>
+  
+      <div class="w3-container">
+        <h4>Fortnight 1: ML Formulation, Validation, and Fairness</h4>
+        <h6>Covered: Skill 1</h6>
+        <p>Fortnight 1 of Semester 2 took us further into machine learning, and in particular to developing a practical understanding of machine learning validation, fairness, and potential biases. The Google tutorial utilised for this demonstration was outstanding, and I consider myself immensely better versed as a result of the piece.</p>
+        <p>Within the context of my Semester 1 individual maker project, I toyed with the manual creation of a model trained via TensorFlow machine learning, however determined that the understanding required to suitably undergo such work, and the time to build that understanding, were outside of my present means; instead I pivoted to utilising Teachable Machine as a friendly web interface that delivered a suitable output for my purpose, whilst obscuring and abstracting away the underlying mechanisms and nuance inherent to training such a model. This is something I have dwelled on since, and the opportunity to pursue investigations in this manner further immediately spoke to me. </p>
+        <p>When conducting of this fortnight’s stretch task I’ve greatly enjoyed both sides of the homework; namely the technical coding explorable within the notebook, and the running discussion on Fairness that is implicitly relevant to any model of consequence.</p>
+        <p>The expansion of technical skill is ongoing but still of value; whilst this notebook had all code in place in advance, I took steps to run through and properly understand as much as possible what it was doing in each line. Realistically this action has not left me in a place in which I could build such a model from memory, however I believe I could now effectively work alongside such a template and produce something explainable, tuneable, and suitable for a given task.</p>
+        <img src="fortnights_s2_f1_colab.jpg" alt="Semester 2 Fortnight 1: Colab screenshot" style="width:100%">
+        <p><i><font size="-1">Further exploration of the 1994 Census data set - Visualising the massive gender disparity in highly paid positions.</font></i></p>
+        <p>Beyond the expansion of technical skill sits the understanding of risk inherent to trusting a “black box” such as Teachable Machine. This fortnight has spelled out well the trade-offs that are balanced when tuning a model, and the importance of understanding the decisions being made when determining the appropriate balance. In the context of the homework’s “1994 Census bureau database” set, such data may be utilised within numerous civic contexts including in affirmative employment actions, monitoring of worker burnout, and the setting/adjusting of wages. Within the context of my maker project’s imagined end state, these trade-offs might influence whether or not a parent is sent a notification that they should be concerned about a particular health condition; whether it is tuned towards avoiding false negatives or false positives could be of massive consequence to the health of a child, or the emotional wellbeing of parents. To inherently trust a model without understanding where these lines are being drawn, and the meanings and values of metrics such as accuracy, precision and recall, is incredibly problematic and this is a crucial learning to take forward.</p>
+        <p>The fortnight also required <i>another</i> video recording. Having learned from my mistakes, I adhered to the time limit through careful trimming of any pauses and instances of "um" and "uh", as well as through accelerating by ~12%. Ugly but effective for this purpose!</p>
+        <img src="fortnights_s2_f1_screenshot.jpg" alt="Semester 2 Fortnight 1: Dave Talking" style="width:100%">
+        <p><i><font size="-1">Another video recording. This time, I used software to speed it up and slide in under the time limit!</font></i></p>
+        <hr>
+
+        <h4>Fortnight 2: Past, present and future of a CPS</h4>
+        <h6>Covered: Skill 3</h6>
+        <p>Unfortunately, as a result of prioritisation of family matters as of the time of writing, fortnight 2’s homework remains outstanding. Whilst this homework was designated as a "mulligan" of sorts, the research-based learnings it was seeking to implant are something I aim to come back to in the holiday period post-study; where there is outstanding learning I will seek to follow in my own time.</p>
+        <p>The prioritisation of other works to suitably ensure completion ahead of deadlines, perhaps speaks to a growing skill 3 ability, however!</p>
+        <hr>
+
+        <h4>Fortnight 2b: Build Journal Update!</h4>
+        <h6>Covered: Skill 1, Skill 2, Skill 3</h6>
+        <p>The very traditional Microsoft Word document form of my semester 1 build journal was functionally effective, but lacking in the creativity I was hoping to rediscover in myself over the year. Further to this, its creation in no way enhanced the skills I have been looking to develop. So, the only thing for it was to pivot!</p>
+        <p>I decided that a practical but creative option, that would involve coding (learning basic html/css), "building" (configuring a Raspberry Pi with a method of hosting a website, and anything else that would be entailed), and "project management" (strategising the migration of the existing journal, and managing myself as a nominal "full stack developer"), would be to start again with a self-hosted website. Moreover, learnings from this may prove valuable when it came to the group maker project, and general knowledge for future roles.</p>
+        <p>As such, time this fortnight was dedicated to researching and implementing a pi-hosted website. <a href="https://www.nginx.com" target="_blank">NGINX</a> was decided upon as a server, and a template on <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a> was determined to be a suitable starting point.</p>
+        <img src="fortnights_s2_f2b_nginx.jpg" alt="Semester 2 Fortnight 2b: NGINX on Pi" style="width:100%">
+        <p><i><font size="-1">Getting the nginx web server running on a Raspberry Pi.</font></i></p>
+        <p>Exploring the steps of iteratively building and validating a site page-by-page, through a Pi-based remote development and hosting environment (thanks VSCode server!), has been on immense benefit to my tech-awareness; it has long been a missing piece of the puzzle for me. Furthermore, as a communication method it is inherently far more flexible and navigable than a single, ever-expanding document, and this has opened my eyes to the way in which ideas can be better communicated through different media, even in an academic or journalistic context.</p>
+        <hr>
+
+        <h4>Fortnight 3: I like to hack it hack it</h4>
+        <h6>Covered: Skill 1, Skill 3</h6>
+        <p>This fortnight’s homework centred on two Encryption techniques of differing complexities; the classic “Caesar Cypher” and the simple but effective “XOR Cypher”.</p>
+        <p>The homework was in many ways a return to a comfortable norm; it involved solving problems utilising Python (enhancing skill 1 largely through reinforcement of previous learnings), and even a little playing with Raspberry Pis, however the exploration of simple cyphers was both interesting and informative. It gave an insight into not only how information can be sent in a manner such that interception does not automatically mean the information is accessible by the interceptor, and also then context around means by which decryption or infiltration might in fact be possible.</p>
+        <p>Perhaps the biggest revelation to me here was more a managerial/cybernetic one that I would consider within skill 3; the weakest point of a "secure system" might not be the encryption. However strong a cypher is, the message might be prone to interception at either end if the sender and receiver devices aren’t themselves secured. In this instance, the vulnerability was having only one user account on the sending Raspberry Pi, and it of course having Superuser access. Whilst the file was “locked” so as not to be able to be read by a regular user, anyone with rudimentary Linux knowledge could access it by elevating privileges with a “sudo” command, or even use this to alter permissions entirely. Similarly, when at scale the vulnerability can as easily be at a human level as an endpoint technological vulnerability.</p>
+        <p>With this in mind I was able to very easily alter the message in advance of most students accessing it, in a way that in no way was malicious or damaging to anyone's homework but that proved the viability of such an act independently of whatever cypher was in place.</p>
+        <img src="fortnights_s2_f3_screenshot.jpg" alt="Semester 2 Fortnight 3: Decryption from Terminal" style="width:100%">
+        <p><i><font size="-1">Terminal output of decrypted message, noting the extra text I inserted as the last line.</font></i></p>
+        <hr>
+
+        <h4>Fortnight 4: Interfaces</h4>
+        <h6>Covered: Skill 3</h6>
+        <p>Ah, interfaces. This was a fortnight that gave opportunity for a focus on my "Skil 3" - With definition that involved 'creating an “interface”: a simple way for 2 systems to interact', there was an open-ended capacity for 'building'. The technical requirements for assessment, however, were somewhat difficult to discern and as a result effort was focused in places that were of personal interest, fun to discuss, and rather importantly not overly complex rather than being skill-building.</p>
+        <p>With that said, my chosen interface of a magnetic tile based ball run, along which my toddler son Henry (aka "System 1") would roll a peanut butter ball ("data") for consumption by my dog Evie (aka "System 2") did prove to allow for some degree of troubleshooting and learning as I adapted a concept to the environment (stairs by the back deck).</p>
+        <video width="400px" height="600px" controls="controls"/>         
+          <source src="CECS8001_S2_F4_HW_Interfaces_David_Auricht_Evidence.mp4" type="video/mp4">
+        </video>
+        <p><i><font size="-1">The transmission of data "Treat ball" across a boundary between systems "Toddler" and "Dog" via an interface of "Ball run".</font></i></p>
+        <p>The issues encountered with appropriate handling of the "data" and its key properties (stickiness, size) resulted in alterations to the system as a focus on maximising momentum throughout was increasingly required. Whilst in some senses child's play given the nature of what was built, the process of iteration and improvement through trial and error to not only improve the function of the system (in this case complexity of the run, progressing down more and more stairs), but also improve reliability and resolve issues inherent to the construction, was very much in line with the process that I have increasingly been adopting with all "Skill 3" type works - More was learned from this homework than I would initially have expected!</p>
+        <hr>
+
+        <h4>Fortnight 5: Teachable humans</h4>
+        <h6>Covered: Skill 1, Skill 2</h6>
+        <p>Teachable humans brought a lot of the course's content full circle for me, placing me in a position to reflect upon what I have learned through the year and to adapt this into the teaching of another individual. I determined "Skill 1" to be suitable here - Python is broadly useful and (I'd like to think) interesting subject matter, even for those without previous coding interest.</p>
+        <p>I saw the best way to commence this as taking into account the needs of all users of the System (the education, in this case); namely myself as a teacher, my wife as a student, and the tutors as recipients of the assessment submission. The needs of the assessors and I were easy to align thanks to the marking schema and a sufficient dose of self-awareness, however those of the student were something I deemed to leave open to catering to within the scope of the "course", through a rudimentary "choose your own adventure" style that:
+        <ol>
+          <li>Gave an introduction to Python as a language.</li>
+          <li>Walked the user through the concept of a development environment, and necessary software installation.</li>
+          <li>Introduced and walked through the basic first steps of writing and executing code including the terminal, variables, and loops.</li>
+          <li>Demonstrated three "interesting" use cases:
+            <ul>
+              <li>MicroPython on a Micro:Bit outputting data for visualisation and logging</li>
+              <li>A script scraping images from a website and save them locally</li>
+              <li>A machine-learning derived model detecting and classifying objects</li>
+            </ul>
+          </li>
+          <li>Allowed the student to select the use case that most appealed to their needs, and commenced the education of Python with a clear target of that end-state.</li>
+        </ol>
+        </p>
+        <img src="fortnights_s2_f5_screenshot.jpg" alt="Semester 2 Fortnight 5: Allowing the student to direct their learning" style="width:100%">
+        <p><i><font size="-1">Extract from the lesson - Allowing the student to direct their learning</font></i></p>
+        <p>From a "Skill 1" perspective this fortnight allowed me to consolidate learning by re-running and ensuring memorisation of my coding journey through the year, and in particular gave opportunity to reflect on key outputs that gave evidence to not only the skills I had learned, but also their value in real-world application.</p>
+        <p>Surprisingly (at least, <i>I</i> would have been surprised at this when first reading the homework brief), "Project Management" of a sense was notably developed here. Viewing the lesson as the System, and taking into account the needs and behaviours of all stakeholders when developing and implementing, required a Cybernetic approach to Project Management (albeit on a small scale), and the results of this consideration were incredibly positive in terms of my student's appreciation, my own reflection, and the grade fed back from the assessors.</p>
+      </div>
+  </div>
+  <hr>
+<!-- END BLOG ENTRIES -->
+</div>
+
+<!-- Sidebar -->
+<div class="w3-col l4">
+  <!-- About Card -->
+  <div class="w3-card w3-margin w3-margin-top">
+  <img src="home_dave_profile.jpg" style="width:100%">
+    <div class="w3-container w3-white">
+      <h4><b>Dave</b></h4>
+      <p>"Recovering Professional Cynic"</p>
+      <p>With a background in software testing, and management thereof, I come to the programme looking to hone broader interests in modern and emerging technologies and the benefits I hope they can provide to society.</p>
+    </div>
+  </div><hr>
+  
+  <!-- Posts -->
+  <div class="w3-card w3-margin">
+    <div class="w3-container w3-padding">
+      <h4>Entries</h4>
+    </div>
+    <ul class="w3-ul w3-hoverable w3-white">
+      <li>
+         <a href="index.html" target="_self">
+         <img src="sidebar_intro_icon.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+         <span class="w3-large">Intro</span><br>
+         <span>An introduction to myself and my journal.</span>
+         </a>
+      </li>
+      <li>
+        <a href="skills.html" target="_self">
+        <img src="skills_balloon.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Skills</span><br>
+        <span>An overview of "build" skills to be developed</span>
+        </a>
+     </li>
+     <li>
+      <a href="fortnights_s1.html" target="_self">
+      <img src="fortnights_f4_screenshot.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+      <span class="w3-large">Semester 1</span><br>
+      <span>A fortnight-by-fortnight look at skill growth</span>
+      </a>
+     </li>      
+     <li>
+      <a href="maker_project.html" target="_self">
+      <img src="maker_schematic.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+      <span class="w3-large">Maker Project</span><br>
+      <span>The semester 1 maker project's learnings</span>
+      </a>
+     </li>
+     <li>
+      <a href="cps_project.html" target="_self">
+      <img src="cps_build_evolution.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+      <span class="w3-large">CPS Project</span><br>
+      <span>The semester 2 CPS project's learnings</span>
+      </a>
+     </li> 
+     <li>
+      <a href="rolling_summary.html" target="_self">
+      <img src="rolling_summary_crop.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+      <span class="w3-large">Rolling Summary</span><br>
+      <span>Per-checkpoint status check</span>
+      </a>
+     </li>
+     <li>
+      <a href="appendices.html" target="_self">
+      <img src="appendices_hexen.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+      <span class="w3-large">Appendices</span><br>
+      </a>
+     </li>   
+    </ul>
+  </div>
+  
+<!-- END Sidebar -->
+</div>
+
+<!-- END GRID -->
+</div><br>
+
+<!-- END w3-content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>, modified by David Auricht</p>
+</footer>
+
+</body>
+</html>

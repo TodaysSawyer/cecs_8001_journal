@@ -1,0 +1,206 @@
+<!--Site layout and design credit goes to W3 Schools' "Blog template" from https://www.w3schools.com/w3css/tryw3css_templates_blog.htm-->
+<!--Modifications and content by David Auricht-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>David Auricht's Build Journal</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
+</head>
+<body class="w3-light-grey">
+
+<!-- w3-content defines a container for fixed size centered content, 
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1400px">
+
+<!-- Header -->
+<header class="w3-container w3-center w3-padding-32"> 
+  <h1><b>Master of Applied Cybernetics - CECS8001 – Build Journey</b></h1>
+  <p>David Auricht - U7446851</p>
+</header>
+
+<!-- Grid -->
+<div class="w3-row">
+
+<!-- Blog entries -->
+<div class="w3-col l8 s12">
+  <!-- Blog entry -->
+  <div class="w3-card-4 w3-margin w3-white">
+    <div class="w3-container">
+      <h3><b>Cyber-Physical System Project</b></h3>
+    </div>
+
+    <div class="w3-container">
+      <h6>Covered: Skills 1, 2, 3</h6>
+      <p>The Cyber-Physical System (CPS) Project was a massive undertaking that relied upon and assisted in developing all three target skills. With a team working to the goal of building a “Haptic Compass” vibrating and guiding wristband, and in order of skills, I would need to rely upon:</p> 
+      <ol>
+        <li>Coding - Writing Python code to support two ends of an interface:
+          <ul>
+            <li>A microcontrolled wristband that interprets signals from a "chief" device and actuates them as the triggering of any combination of four buzzers embedded in the band.</li>
+            <li>The "chief" device that sends commands as determined by the use case and the present enviornmental state (e.g. GPS location)</li>
+          </ul>
+         </li>
+        <li>Physical “making” - Iteratively breadboarding a circuit fit for purpose, then soldering it together in a way that suits a working prototype.</li>
+        <li>Project managing - Working with a team to build a defined set of goals that suits all of our individual targetted outcomes, working to an iterative model that aims to ensure a functional product at multiple intervals, and an appropriate demonstration of our work, in line with hitting a strict deadline.</li>
+      </ol>
+
+      <p>As previously, I mapped an initial concept schematic that described, at a high level, the functionaility of the product to guide my, and thus the team's, thinking and approach:</p>
+
+      <img src="cps_model.jpg" alt="Model of intended prototypical and end-state Haptic Compass system" style="width:100%">
+      <p><i><font size="-1">Model of intended prototypical and end-state Haptic Compass system</font></i></p>  
+
+      <p>When contrasted with the first semester's individual maker project, this work presented a number of fresh challenges. Given the nature of this journal, I will group my writing according to the three "Skills".</p>
+      
+      <hr>
+
+      <h4>Coding</h4>
+      <p>With the previous semester's gargantuan (given my lack of experience, and the time available) effort in mind, I decided that a course learning to apply was that of alloting suitable effort to meet personal and assessment criteria without risking burnout, or jeopardising other matters (whether personal or academic). Codewise, then, I took a more iterative and simplistic approach that rapidly evolved from my ideal state, of building a bespoke Android application to triangulate position and trajectory using a phone's GPS sensor and thus continually identify necessary navigational prompts that can be passed to the Haptic Compass, to a more moderate one that would serve just as well on demonstration day and allow appropriate effort be placed in the many other priorities. This may not be classic "learning to code", but as with many things in life there is a good lesson in accepting when enough is enough!</p>
+      <p>On a perhaps more classic code level, I enjoyed the challenge of defining dataflow between devices. Given the limitations of the Circuit Playground Expresses we used for prototyping, I determined that passing of a simple text string (whether via Serial or Bluetooth) was well suited to conveying the necessary information for a buzz pattern.</p>
+      <p>Again, the learnings here were unlike others in the course where I strove for complexity - As I iterated, I trimmed the schema from my initial design, in which three commands were sent in a single packet, and buzz lengths of "short", "medium", and "long" were defined:</p>
+      <i><p style="color:#39552B; margin-left: 40px"># string should be of format FFFLLLRRRBBBTTTV where FFF refers to a command for the front buzzer, LLL left, etc. etc.</p>
+      <p style="color:#39552B; margin-left: 40px"># TTT represents the time of each pulse and V represents a checkdigit</p>
+      <p style="color:#39552B; margin-left: 40px"># each command for each buzzer allows for three pulses per signal, each pulse either short (denoted by "S", medium "M", long "L", pause "Z" or pass "X")</p></i>
+      <p>To a much simpler one in which a single buzz was sent per packet along with a numerical buzz length and time to wait before commencing next buzz:</p>
+      <i><p style="color:#39552B; margin-left: 40px"># string should be of format FLRBTTPPPV where F refers to the front buzzer, L left, etc. etc.</p>
+      <p style="color:#39552B; margin-left: 40px"># the buzzer is either activated by this commmand with an inclusion of the actual letter (e.g. B in index 3) or left unactivated with an "X" in this position.</p>
+      <p style="color:#39552B; margin-left: 40px"># TT represents the time of each pulse, in tenths of a second, PPP the time to wait before initialisation of the next buzz, and V a checkdigit.</p></i>
+      <p>A number of factors prompted the moves that culminated in this solution; in particular the integration between code and a physical band that allowed us to feel the actuations on our wrists and determined the need to have more tunable buzz time, and the implementation of a hardcoded buzz pattern for demo day that aligned with preconsidered timing, and was uncomfortably complex to implement with the initial concept.</p>    
+      <img src="cps_demo_day_script.jpg" alt="Script adapted for demonstration day" style="width:100%">
+      <p><i><font size="-1">Script as adapted for running prototyoes on demonstration day.</font></i></p>  
+      <p>Whilst not as deep and convuluted (codewise) as the baby monitor, the inclusion of a controlled physical actuator brought a different element to the coding. The discovery that different transistors we had at our disposal, for example, required opposite handling (setting "False" to turn <i>on</i> a buzzer, for example, with one form of transistor where the other required "True" to actuate), and the aforementioned need to account for suitable actuation time to be processed by the human user led to further tweaks. Even when coding a breadboarded system, consideration of actuation was needed - buzzers were difficult to judge behaviour of via visual means, and had a painful tendancy to buzz their way out of a breadboard, and LEDs were determined to provide a suitable analogue for this phase of developement.</p>       
+      <video width="400px" height="600px" controls="controls"/>         
+          <source src="cps_breadboard.m4v" type="video/mp4">
+        </video>
+      <p><i><font size="-1">Breadboarding of the CPS, with LEDs representing buzzers. </font></i></p>
+      <p>There was an important lesson throughout the coding in terms of the order of operations, and understanding of dependencies - key milestones needed to be reached by physical build and code developement so integration could be tested and direction changed if needed.</p>
+      <hr>
+
+      <h4>Building</h4>
+      <p>Whilst not a complex concept, the manufacture of the Haptic Compass prototypes required a large amount of very finnicky soldering, wiring, and insulation, and was instrumental in my development.</p>
+      <p>As with the coding, build was an iterative process within which I initially breadboarded, then clipped circuits together with alligator clipped leads, and finally began to solder and bring together a more polished product.</p>
+      <img src="cps_build_evolution.jpg" alt="Evolution of physical builds" style="width:100%">
+      <p><i><font size="-1">Evolution of physical builds (progress right to left)</font></i></p>  
+      <p>As we moved from clips to soldering, the first step was to wire together self contained buzzer "modules" that incorporated a buzzer motor, transistor for control, capacitor for reliability and a resistor to ensure appropriate strength of signal from the Circuit Playground Express. These could be individually tested and validated through simple code on the CPE, and taught the value of appropriate insulation (shorting any of the wires was of course problematic!) and also the fragility of the structure without appropriate support; as we brought components together it became increasingly important to strengthen with overlying heatshrink.</p>
+      <p>Four of these modules were then wired together to draw upon common power supply (in parallel), and again retested with a CPE one at a time.</p>
+      <img src="cps_soldering_halfway.jpg" alt="Half way with wiring and soldering - Four buzz modules in parallel, with power wired but no control.  " style="width:80%">
+      <p><i><font size="-1">Half way with wiring and soldering - Four buzz modules in parallel, with power wired but no control.</font></i></p>  
+      <p>Finally, control wires were soldered to the CPE, and it was tested one last time before integration with the band.</p>
+      <img src="cps_soldering_stand.jpg" alt="Soldering the control wires" style="width:80%">
+      <p><i><font size="-1">Soldering the control wires</font></i></p>  
+      <p>As this was integrated into the band, placed on wrists, and tested, further issues came to light that necessitated final alterations - some joints proved intermittently faulty when bent, and a set of transistors became non-functional when used for long periods (presumably due to overheating). </p>
+      <p>This was an intricate soldering process throughout, as depicted in photos, that required a lot of work and rework, and my ability to "build", and in particular wire and solder, was greatly enhanced.</p>
+      <hr>
+
+
+      <h4>Project Management</h4>
+      <p>As with all teams in the cohort, the range of skillsets and expertises in our group was almost as varied as our styles of working and our scheduling. The balancing of priorities and roles required management that took individuals into account, and was ultimately grounded in trust between teammates.</p>
+      <img src="cps_build_team.jpg" alt="CPS Team" style="width:80%">
+      <p><i><font size="-1">CPS Team (Why do I look like I'm terrified?)</font></i></p>  
+      <p>This was, by far, the most diverse team that I have been involved in - My background is within a rather well defined discipline, and as such I'm used to working with, and managing, software testers that generally have common mindsets and approaches. With a small team we were able to share some degree of the "Project Management", and I slowly began to develop an appreciation of the different aspects we were bringing together - in particular, the audiovisual experience that was not technically part of the prototype, but which was key to demonstration and thus the wooing of interested parties on demo day.</p>
+      <p>A few key lessons were ultimately learned regarding Project Management during this work, specifically the importance of:</p>
+      <ul>
+        <li>Transparency - Keeping each other aware of the present state of our work, and next steps, at all times even if we were working on unlinked aspects of the project. This built confidence, and allowed for us to provide guidance and support to each other as needed.</li>
+        <li>Accountability - With each of us accountable for specific parts of the project, there was motivation to deliver and awareness of what we were focussing our attention on.</li>
+        <li>Communication - Keeping discussion flowing brought the team closer and meant that discussions could be handled in a friendly manner.</li>
+        <li>Awareness and compromise - It was easy at times to keep internalised our own views of the project, only to find that these strayed from those of others in the group. The further we progressed, the more openly we discussed our perspectives and this facilitated the output of a prototype that fitted the different funal use cases that we had in mind.</li>
+      </ul>
+      <p>Whilst I wouldn't say I, or any of the team <i>managed</i> the project in completion, these learnings are key to any future endeavours in this area.</p>
+
+    </div>
+  </div>
+  <hr>
+<!-- END BLOG ENTRIES -->
+</div>
+
+<!-- Sidebar -->
+<div class="w3-col l4">
+  <!-- About Card -->
+  <div class="w3-card w3-margin w3-margin-top">
+  <img src="home_dave_profile.jpg" style="width:100%">
+    <div class="w3-container w3-white">
+      <h4><b>Dave</b></h4>
+      <p>"Recovering Professional Cynic"</p>
+      <p>With a background in software testing, and management thereof, I come to the programme looking to hone broader interests in modern and emerging technologies and the benefits I hope they can provide to society.</p>
+    </div>
+  </div><hr>
+  
+  <!-- Posts -->
+  <div class="w3-card w3-margin">
+    <div class="w3-container w3-padding">
+      <h4>Entries</h4>
+    </div>
+    <ul class="w3-ul w3-hoverable w3-white">
+      <li>
+         <a href="index.html" target="_self">
+         <img src="sidebar_intro_icon.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+         <span class="w3-large">Intro</span><br>
+         <span>An introduction to myself and my journal.</span>
+         </a>
+      </li>
+      <li>
+        <a href="skills.html" target="_self">
+        <img src="skills_balloon.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Skills</span><br>
+        <span>An overview of "build" skills to be developed</span>
+        </a>
+      </li>
+      <li>
+        <a href="fortnights_s1.html" target="_self">
+        <img src="fortnights_f4_screenshot.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Semester 1</span><br>
+        <span>A fortnight-by-fortnight look at skill growth</span>
+        </a>
+      </li> 
+      <li>
+        <a href="fortnights_s2.html" target="_self">
+        <img src="fortnights_s2_f1_screenshot.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Semester 2</span><br>
+        <span>A fortnight-by-fortnight look at skill growth</span>
+        </a>
+      </li>
+      <li>
+        <a href="maker_project.html" target="_self">
+        <img src="maker_schematic.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Maker Project</span><br>
+        <span>The semester 1 maker project's learnings</span>
+        </a>
+      </li>   
+      <li>
+        <a href="rolling_summary.html" target="_self">
+        <img src="rolling_summary_crop.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Rolling Summary</span><br>
+        <span>Per-checkpoint status check</span>
+        </a>
+      </li> 
+      <li>
+        <a href="appendices.html" target="_self">
+        <img src="appendices_hexen.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Appendices</span><br>
+        </a>
+      </li> 
+    </ul>
+  </div>
+  <hr> 
+  
+<!-- END Sidebar -->
+</div>
+
+<!-- END GRID -->
+</div><br>
+
+<!-- END w3-content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>, modified by David Auricht</p>
+</footer>
+
+</body>
+</html>
